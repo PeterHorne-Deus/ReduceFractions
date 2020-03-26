@@ -18,7 +18,6 @@ public class ReduceFraction {
      * @param args the command line arguments
      */
     public static void main(String[] args) {
-        System.out.println("WARNING: Please ensure factor is reducable or an inaccurate answer will be produced");
         //User input variables
         int num1 = Integer.parseInt(JOptionPane.showInputDialog("Enter the numerator of the fraction"));
         int num2 = Integer.parseInt(JOptionPane.showInputDialog("Enter the denomiator of the fraction"));
@@ -27,16 +26,13 @@ public class ReduceFraction {
         if(num2 == 0){
             System.out.println("Not A Fraction");
         }
+        
         //Calculating the reduced fraction
         else{
-            //Calculating a less than zero reduced fraction (only works for fractions that do reduce)
-            if(num1/num2 < 1){
-                System.out.println("The reduced fraction is: " + num1/reduce(num1,num2) + "/" + reduce(num1,num2));
-            }
-            //Calculating redcuded greater than one fractions
-            else{
-                System.out.println("The reduced fraction is: " + reduce(num1,num2));
-            }
+            //Calculating a reduced fraction 
+            System.out.println("The reduced fraction is: " + num1/reduce(num1,num2) + "/" + num2/reduce(num1,num2));
+               
+            
         }
             
     }
@@ -54,14 +50,9 @@ public class ReduceFraction {
             return n1;
         }
         else{
-           //If the number can be whole divided then it is 
-           if(n1%n2 == 0){
-               return n1/n2;
-           }
-           //Running through the GCD calculations 
-           else{
-               return reduce(n2 , n1%n2);
-           }
+            //Running through the GCD calculations 
+            return reduce(n2 , n1%n2);
+            
            
         }
             
